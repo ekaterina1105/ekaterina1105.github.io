@@ -2,139 +2,262 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мое Резюме</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Екатерина | Портфолио-резюме</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            padding: 20px;
-            background-color: #e3f2fd;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
         }
+
+        .glass-card {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.01);
+        }
+
+        .resume-content {
+            padding: 40px 50px;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #1e293b, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #a855f7);
+            border-radius: 4px;
+        }
+
+        /* Секции */
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 48px;
+            animation: fadeUp 0.6s ease-out forwards;
+            opacity: 0;
         }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 18px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
+
+        .section-title i {
+            color: #3b82f6;
+            font-size: 1.6rem;
+        }
+
+        /* Карточки и стили данных */
+        .custom-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 24px 28px;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        /* Фото */
         .personal-photo {
-            width: 200px;
-            height: 200px;
+            width: 160px;
+            height: 160px;
             object-fit: cover;
             border-radius: 50%;
-            margin: 0 auto 20px; /* Центрирование по горизонтали */
-            border: 3px solid #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 4px solid white;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: block;
+            margin: 0 auto 20px;
+        }
+
+        .personal-photo:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 35px -8px rgba(59, 130, 246, 0.4);
+        }
+
+        .info-line {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1rem;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .info-line i {
+            width: 28px;
+            color: #3b82f6;
+            font-size: 1.2rem;
+        }
+
+        .info-line strong {
+            color: #1e293b;
+            font-weight: 600;
+            min-width: 70px;
+        }
+
+        .grid-modern {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .lang-item, .edu-item {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 16px 22px;
+            flex: 1 1 200px;
+            transition: all 0.2s;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .lang-item p, .edu-item p {
+            margin-bottom: 6px;
+        }
+
+        .level-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .resume-content {
+                padding: 28px 20px;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .personal-photo {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 60px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center mb-5">Мое Резюме</h1>
 
-        <!-- Личная информация -->
+<div class="glass-card">
+    <div class="resume-content">
+        
+        <div class="text-center mb-4">
+            <h1 class="hero-title">✨ Екатерина ✨</h1>
+            <p class="text-muted mt-2" style="font-size: 1rem;">Frontend-разработчик | Создаю цифровые решения с душой</p>
+        </div>
+
         <div id="personal-info" class="section">
             <img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/241/032/782/112/817/36/100045249601b0.jpg" alt="Фото" class="personal-photo">
-            <h2 class="section-title">Личная информация</h2>
-            <div class="card">
-                <div class="card-body">
-                    <p><strong>Имя:</strong> <span id="name"></span></p>
-                    <p><strong>Email:</strong> <span id="email"></span></p>
-                    <p><strong>Телефон:</strong> <span id="phone"></span></p>
+            <div class="custom-card mt-3">
+                <div class="card-body p-0">
+                    <div class="info-line"><i class="fas fa-user-circle"></i> <strong>Имя:</strong> <span id="name"></span></div>
+                    <div class="info-line"><i class="fas fa-envelope"></i> <strong>Email:</strong> <span id="email"></span></div>
+                    <div class="info-line"><i class="fas fa-phone-alt"></i> <strong>Телефон:</strong> <span id="phone"></span></div>
                 </div>
             </div>
         </div>
 
-<!-- Языки -->
-<div id="languages" class="section">
-    <h2 class="section-title">Языки</h2>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div id="languages-list" class="row"></div>
-        </div> 
-    </div>
-</div>
+        <div id="languages" class="section">
+            <h2 class="section-title"><i class="fas fa-globe"></i> Языковой профиль</h2>
+            <div id="languages-list" class="grid-modern"></div>
+        </div>
 
-<!-- Образование -->
-<div id="education" class="section">
-    <h2 class="section-title">Образование</h2>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div id="education-list" class="row"></div>
+        <div id="education" class="section">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Образование</h2>
+            <div id="education-list" class="grid-modern"></div>
+        </div>
+
+
+        <div class="footer-note">
+            <i class="fab fa-github"></i> github/ekaterina1105 &nbsp;|&nbsp; 
+            <i class="fab fa-linkedin"></i> ekaterina.dev &nbsp;|&nbsp;
+            <i class="fas fa-code"></i> Актуальное резюме — 2026
         </div>
     </div>
 </div>
-
-
-
-    <script>
-
-         async function fetchData() {
-            try {
-                const response = await fetch('resume.json');
-                if (!response.ok) throw new Error('Ошибка загрузки');
-                return await response.json();
-            } catch (error) {
-                console.error('Ошибка:', error);
-                return null;
-            }
-        }
-
-
-        function renderPersonalInfo(data) {
-            document.getElementById('name').textContent = data.name;
-            document.getElementById('email').textContent = data.email;
-            document.getElementById('phone').textContent = data.phone;
-        }
-
-function renderLanguages(languages) {
-    const container = document.getElementById('languages-list');
-    container.innerHTML = ''; // очищаем контейнер перед добавлением
-
-    languages.forEach(lan => {
-        const item = `
-            <div class="col-md-6">
-                <div>
-                    <p><strong>Язык:</strong> ${lan.name}</p>
-                    <p><strong>Уровень:</strong> ${lan.level}</p>
-                </div>
-            </div>
-        `;
-        container.innerHTML += item;
-    });
-}
-
-function renderEducation(education) {
-    const container = document.getElementById('education-list');
-    container.innerHTML = ''; // очищаем контейнер перед добавлением
-
-    education.forEach(edu => {
-        const item = `
-            <div class="col-md-6">
-                <div>
-                    <h5>${edu.degree}</h5>
-                    <p><strong>Учебное заведение:</strong> ${edu.institution}</p>
-                    <p><strong>Год окончания:</strong> ${edu.year}</p>
-                </div>
-            </div>
-        `;
-        container.innerHTML += item;
-    });
-}
-
-
-        
-        async function renderResume() {
-            const resume = await fetchData();
-
-            renderPersonalInfo(resume.personal);
-            renderEducation(resume.education);
-            renderLanguages(resume.languages);
-        }
-
-        renderResume();
-    </script>
-</body>
-</html>
