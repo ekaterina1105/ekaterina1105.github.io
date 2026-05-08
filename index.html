@@ -261,3 +261,65 @@
         </div>
     </div>
 </div>
+
+<script>
+    async function fetchData() {
+        try {
+            const response = await fetch('resume.json');  
+            if (!response.ok) throw new Error('Ошибка загрузки');
+            return await response.json();
+        } catch (error) {
+            console.error('Ошибка:', error);
+            return null;
+        }
+    }
+
+    function renderPersonalInfo(data) {
+        document.getElementById('name').textContent = data.name;
+        document.getElementById('email').textContent = data.email;
+        document.getElementById('phone').textContent = data.phone;
+    }
+
+    function renderLanguages(languages) {
+        const container = document.getElementById('languages-list');
+        container.innerHTML = '';
+        
+        languages.forEach(lang => {
+            const item = `
+                <div class="lang-item">
+                    <strong>${lang.name}</strong>
+                    <span class="level-badge">${lang.level}</span>
+                </div>
+            `;
+            container.innerHTML += item;
+        });
+    }
+
+    function renderEducation(education) {
+        const container = document.getElementById('education-list');
+        container.innerHTML = '';
+        
+        education.forEach(edu => {
+            const item = `
+                <div class="edu-item">
+                    <h5>${edu.degree}</h5>
+                    <p>${edu.institution}</p>
+                    <small>${edu.year}</small>
+                </div>
+            `;
+            container.innerHTML += item;
+        });
+    }
+
+    async function renderResume() {
+        const resume = await fetchData();  
+        
+        if (resume) {
+            renderPersonalInfo(resume.personal);
+            renderEducation(resume.education);
+            renderLanguages(resume.languages);
+        }
+    }
+
+    renderResume(); 
+</script>
