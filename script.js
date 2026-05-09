@@ -13,6 +13,7 @@ function renderPersonalInfo(data) {
     if (data.name) document.getElementById('name').textContent = data.name;
     if (data.email) document.getElementById('email').textContent = data.email;
     if (data.phone) document.getElementById('phone').textContent = data.phone;
+    if (data.city) document.getElementById('city').textContent = data.city;
 }
 
 function renderSkills(skills) {
@@ -42,7 +43,7 @@ function renderEducation(education) {
     }
 
     education.forEach(edu => {
-        const item = '<div class="edu-item"><div><h5 class="fw-bold mb-2">' + edu.degree + '</h5><p class="mb-1">' + edu.institution + '</p><p class="text-muted small mb-0">Год окончания: ' + edu.year + '</p></div></div>';
+        const item = '<div class="edu-item"><div><h5 class="fw-bold mb-2">' + edu.university + '</h5><p class="mb-1">Уровень образования: ' + edu.degree + '</h5><p class="mb-1">Институт: ' + edu.institution + '</h5><p class="mb-1">Направление подготовки: ' + edu.direction + '</h5><p class="mb-1">Образовательная программа: ' + edu.program + '</p><p class="mb-1">Год окончания: ' + edu.year + '</p></div></div>';
         container.innerHTML = container.innerHTML + item;
     });
 }
