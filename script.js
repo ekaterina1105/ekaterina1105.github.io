@@ -26,15 +26,8 @@ function renderLanguages(languages) {
     }
 
     languages.forEach(lang => {
-        const item = `
-            <div class="lang-item">
-                <div>
-                    <strong style="font-size: 1.2rem;">${lang.name}</strong>
-                    <p class="text-muted small mt-2 mb-0">Уровень: ${lang.level}</p>
-                </div>
-            </div>
-        `;
-        container.innerHTML += item;
+        const item = '<div class="lang-item"><div><strong style="font-size: 1.2rem;">' + lang.name + '</strong><p class="text-muted small mt-2 mb-0">Уровень: ' + lang.level + '</p></div></div>';
+        container.innerHTML = container.innerHTML + item;
     });
 }
 
@@ -49,16 +42,8 @@ function renderEducation(education) {
     }
 
     education.forEach(edu => {
-        const item = `
-            <div class="edu-item">
-                <div>
-                    <h5 class="fw-bold mb-2">${edu.degree}</h5>
-                    <p class="mb-1">${edu.institution}</p>
-                    <p class="text-muted small mb-0">Год окончания: ${edu.year}</p>
-                </div>
-            </div>
-        `;
-        container.innerHTML += item;
+        const item = '<div class="edu-item"><div><h5 class="fw-bold mb-2">' + edu.degree + '</h5><p class="mb-1">' + edu.institution + '</p><p class="text-muted small mb-0">Год окончания: ' + edu.year + '</p></div></div>';
+        container.innerHTML = container.innerHTML + item;
     });
 }
 
