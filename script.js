@@ -124,7 +124,18 @@ async function renderResume() {
         if (resume.personal) renderPersonalInfo(resume.personal);
         if (resume.skills) renderSkills(resume.skills);
         if (resume.education) renderEducation(resume.education);
-        if (resume) renderAdditional(resume);
+        if (resume.softskills) renderSoftskills(resume.softskills);
+        if (resume.additional) renderAdditional(
+        resume.additional, 
+        resume.additionalIntro, 
+        resume.additionalOutro, 
+        resume.additionalOutroList,
+        resume.additionalLinkText,
+        resume.additionalLinkUrl,
+        resume.additionalThirdPhrase,
+        resume.additionalThirdLinkText,
+        resume.additionalThirdLinkUrl
+    );
     }
 }
 
