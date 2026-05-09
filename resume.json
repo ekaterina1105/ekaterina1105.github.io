@@ -43,5 +43,8 @@
     ],
     "additionalLinkText": "Все статьи можно посмотреть на диске по ссылке:",
     "additionalLink": "https://disk.yandex.ru/d/a-fXgNLrDOWJjw",
-    "additionalLinkUrl": "https://disk.yandex.ru/d/a-fXgNLrDOWJjw"
+    "additionalLinkUrl": "https://disk.yandex.ru/d/a-fXgNLrDOWJjw",
+    "additionalThirdPhrase": "Также в рамках проектной деятельности ведется разработка собственного сайта для коттеджных поселков:",
+    "additionalThirdLinkText": "https://lillfr.github.io/smartvillage/",
+    "additionalThirdLinkUrl": "https://lillfr.github.io/smartvillage/"
 }
