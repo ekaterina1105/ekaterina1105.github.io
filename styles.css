@@ -206,8 +206,3 @@ body {
     margin-bottom: 15px;
 }
 
-.skill-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
-    border-color: rgba(59, 130, 246, 0.3);
-}
