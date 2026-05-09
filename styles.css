@@ -197,3 +197,17 @@ body {
     }
 }
 
+.skill-item {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 16px 22px;
+    transition: all 0.2s;
+    border-left: 4px solid #3b82f6;
+    margin-bottom: 15px;
+}
+
+.skill-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+}
