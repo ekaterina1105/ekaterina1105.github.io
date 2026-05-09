@@ -51,6 +51,25 @@ function renderEducation(education) {
     });
 }
 
+    function renderAdditional(additional) {
+        const container = document.getElementById('additional-list');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        if (!additional || additional.length === 0) {
+            container.innerHTML = '<div class="text-muted">Нет данных</div>';
+            return;
+        }
+
+        let items = '';
+        additional.forEach(item => {
+            items = items + '<li style="margin-bottom: 8px;">' + item + '</li>';
+        });
+        
+        const box = '<div class="edu-item" style="width: 100%;"><div><ul style="margin: 0; padding-left: 20px;">' + items + '</ul></div></div>';
+        container.innerHTML = box;
+    }
+
 async function renderResume() {
     const resume = await fetchData();
     if (resume) {

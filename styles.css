@@ -227,3 +227,27 @@ body {
     padding: 16px 22px;
     border-left: 4px solid #3b82f6;
 }
+
+#additional-list .edu-item {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 16px 22px;
+    width: 100%;
+    border-left: 4px solid #3b82f6;
+}
+
+#additional-list ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+#additional-list li {
+    font-weight: normal;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+#additional-list li:last-child {
+    margin-bottom: 0;
+}
