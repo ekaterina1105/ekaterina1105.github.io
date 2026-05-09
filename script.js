@@ -27,7 +27,7 @@ function renderSkills(skills) {
     }
 
     skills.forEach(skil => {
-        const item = '<div class="skill-item"><div><strong style="font-size: 1.2rem;">' + skil + '</strong></div></div>';
+        const item = '<div class="skill-item"><div><strong style="font-weight: normal;">' + skil + '</span></div>';
         container.innerHTML = container.innerHTML + item;
     });
 }
