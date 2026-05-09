@@ -70,57 +70,53 @@ function renderEducation(education) {
         container.innerHTML = box;
     }
 
-    function renderAdditional(additional, intro, outro, outroList, linkText, linkUrl, secondPhrase, secondLinkText, secondLinkUrl, thirdPhrase, thirdLinkText, thirdLinkUrl) {
-        const container = document.getElementById('additional-list');
-        if (!container) return;
-        container.innerHTML = '';
-        
-        if (!additional || additional.length === 0) {
-            container.innerHTML = '<div class="text-muted">Нет данных</div>';
-            return;
-        }
-
-        let items = '';
-        additional.forEach(item => {
-            items = items + '<li>' + item + '</li>';
-        });
-        
-        let introHtml = '';
-        if (intro) {
-            introHtml = '<p style="margin-bottom: 15px; font-weight: 500;">' + intro + '</p>';
-        }
-        
-        let outroHtml = '';
-        if (outro) {
-            outroHtml = '<p style="margin-top: 15px; font-weight: 500;">' + outro + '</p>';
-        }
-        
-        let outroItems = '';
-        if (outroList && outroList.length > 0) {
-            outroList.forEach(item => {
-                outroItems = outroItems + '<li>' + item + '</li>';
-            });
-            outroHtml = outroHtml + '<ul style="margin: 10px 0 0 0; padding-left: 20px;">' + outroItems + '</ul>';
-        }
-        
-        let linkHtml = '';
-        if (linkText && linkUrl) {
-            linkHtml = '<p style="margin-top: 15px; font-weight: 500;">' + linkText + ' <a href="' + linkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + linkUrl + '</a></p>';
-        }
-        
-        let secondLinkHtml = '';
-        if (secondPhrase && secondLinkText && secondLinkUrl) {
-            secondLinkHtml = '<p style="margin-top: 15px; font-weight: 500;">' + secondPhrase + ' <a href="' + secondLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + secondLinkText + '</a></p>';
-        }
-        
-        let thirdLinkHtml = '';
-        if (thirdPhrase && thirdLinkText && thirdLinkUrl) {
-            thirdLinkHtml = '<p style="margin-top: 15px; font-weight: 500;">' + thirdPhrase + ' <a href="' + thirdLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + thirdLinkText + '</a></p>';
-        }
-        
-        const box = '<div class="edu-item" style="width: 100%;"><div>' + introHtml + '<ul style="margin: 0; padding-left: 20px;">' + items + '</ul>' + outroHtml + linkHtml + secondLinkHtml + thirdLinkHtml + '</div></div>';
-        container.innerHTML = box;
+    function renderAdditional(resume) {
+    const container = document.getElementById('additional-list');
+    if (!container) return;
+    container.innerHTML = '';
+    
+    if (!resume) {
+        container.innerHTML = '<div class="text-muted">Нет данных</div>';
+        return;
     }
+    
+    let html = '<div class="edu-item" style="width: 100%;"><div>';
+    
+    if (resume.additionalIntro) {
+        html = html + '<p style="margin-bottom: 15px; font-weight: 500;">' + resume.additionalIntro + '</p>';
+    }
+    
+    if (resume.additional && resume.additional.length > 0) {
+        html = html + '<ul style="margin: 0 0 15px 0; padding-left: 20px;">';
+        resume.additional.forEach(item => {
+            html = html + '<li>' + item + '</li>';
+        });
+        html = html + '</ul>';
+    }
+    
+    if (resume.additionalOutro) {
+        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + resume.additionalOutro + '</p>';
+    }
+    
+    if (resume.additionalOutroList && resume.additionalOutroList.length > 0) {
+        html = html + '<ul style="margin: 0 0 15px 0; padding-left: 20px;">';
+        resume.additionalOutroList.forEach(item => {
+            html = html + '<li>' + item + '</li>';
+        });
+        html = html + '</ul>';
+    }
+    
+    if (resume.additionalLinkText && resume.additionalLinkUrl) {
+        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + resume.additionalLinkText + ' <a href="' + resume.additionalLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + resume.additionalLinkUrl + '</a></p>';
+    }
+    
+    if (resume.additionalThirdPhrase && resume.additionalThirdLinkUrl) {
+        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + resume.additionalThirdPhrase + ' <a href="' + resume.additionalThirdLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + (resume.additionalThirdLinkText || resume.additionalThirdLinkUrl) + '</a></p>';
+    }
+    
+    html = html + '</div></div>';
+    container.innerHTML = html;
+}
 
 async function renderResume() {
     const resume = await fetchData();
@@ -128,21 +124,7 @@ async function renderResume() {
         if (resume.personal) renderPersonalInfo(resume.personal);
         if (resume.skills) renderSkills(resume.skills);
         if (resume.education) renderEducation(resume.education);
-        if (resume.softskills) renderSoftskills(resume.softskills);
-        if (resume.additional) renderAdditional(
-        resume.additional, 
-        resume.additionalIntro, 
-        resume.additionalOutro, 
-        resume.additionalOutroList,
-        resume.additionalLinkText,
-        resume.additionalLinkUrl,
-        resume.additionalSecondPhrase,
-        resume.additionalSecondLinkText,
-        resume.additionalSecondLinkUrl,
-        resume.additionalThirdPhrase,
-        resume.additionalThirdLinkText,
-        resume.additionalThirdLinkUrl
-    );
+        if (resume) renderAdditional(resume);
     }
 }
 
