@@ -10,9 +10,9 @@ async function fetchData() {
 }
 
 function renderPersonalInfo(data) {
-    document.getElementById('name').textContent = data.name;
-    document.getElementById('email').textContent = data.email;
-    document.getElementById('phone').textContent = data.phone;
+    if (data.name) document.getElementById('name').textContent = data.name;
+    if (data.email) document.getElementById('email').textContent = data.email;
+    if (data.phone) document.getElementById('phone').textContent = data.phone;
 }
 
 function renderLanguages(languages) {
