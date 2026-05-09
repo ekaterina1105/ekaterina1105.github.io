@@ -229,6 +229,6 @@ body {
     margin-bottom: 0;
 }
 
-#skills-list .custom-card {
-    border-left: 4px solid #3b82f6;
+#skills-list .custom-card:hover {
+    border-left: 4px solid #3b82f6 !important;  /* Сохраняет рамку */
 }
