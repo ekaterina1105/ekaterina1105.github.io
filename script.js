@@ -26,7 +26,7 @@ function renderSkills(skills) {
     }
 
     skills.forEach(skil => {
-        const item = '<div class="skil-item"><div><strong style="font-size: 1.2rem;">' + lang.name + '</strong><p class="text-muted small mt-2 mb-0">Уровень: ' + lang.level + '</p></div></div>';
+        const item = '<div class="skil-item"><div><strong style="font-size: 1.2rem;">' + skil.name + '</strong></div></div>';
         container.innerHTML = container.innerHTML + item;
     });
 }
