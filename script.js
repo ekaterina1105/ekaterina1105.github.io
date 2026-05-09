@@ -31,7 +31,7 @@ function renderSkills(skills) {
         items = items + '<li style="margin-bottom: 8px;">' + skill + '</li>';
     });
     
-    const box = '<div class="custom-card"><div class="card-body p-0"><ul style="margin: 0; padding-left: 20px;">' + items + '</ul></div></div>';
+    const box = '<div class="edu-item" style="width: 100%;"><div><ul style="margin: 0; padding-left: 20px;">' + items + '</ul></div></div>';
     container.innerHTML = box;
 }
 
