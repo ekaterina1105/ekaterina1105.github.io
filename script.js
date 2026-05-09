@@ -119,6 +119,7 @@ async function renderResume() {
         if (resume.personal) renderPersonalInfo(resume.personal);
         if (resume.skills) renderSkills(resume.skills);
         if (resume.education) renderEducation(resume.education);
+        if (resume.softskills) renderSoftskills(resume.softskills);
         renderAdditional(resume);
     }
 }
