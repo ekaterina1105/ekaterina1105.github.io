@@ -15,18 +15,18 @@ function renderPersonalInfo(data) {
     if (data.phone) document.getElementById('phone').textContent = data.phone;
 }
 
-function renderLanguages(languages) {
-    const container = document.getElementById('languages-list');
+function renderSkills(skills) {
+    const container = document.getElementById('skills-list');
     if (!container) return;
     container.innerHTML = '';
     
-    if (!languages || languages.length === 0) {
+    if (!skills || skills.length === 0) {
         container.innerHTML = '<div class="text-muted">Нет данных</div>';
         return;
     }
 
-    languages.forEach(lang => {
-        const item = '<div class="lang-item"><div><strong style="font-size: 1.2rem;">' + lang.name + '</strong><p class="text-muted small mt-2 mb-0">Уровень: ' + lang.level + '</p></div></div>';
+    skills.forEach(skil => {
+        const item = '<div class="skil-item"><div><strong style="font-size: 1.2rem;">' + lang.name + '</strong><p class="text-muted small mt-2 mb-0">Уровень: ' + lang.level + '</p></div></div>';
         container.innerHTML = container.innerHTML + item;
     });
 }
@@ -51,7 +51,7 @@ async function renderResume() {
     const resume = await fetchData();
     if (resume) {
         if (resume.personal) renderPersonalInfo(resume.personal);
-        if (resume.languages) renderLanguages(resume.languages);
+        if (resume.skills) renderSkills(resume.skills);
         if (resume.education) renderEducation(resume.education);
     }
 }
