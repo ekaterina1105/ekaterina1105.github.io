@@ -70,48 +70,43 @@ function renderEducation(education) {
         container.innerHTML = box;
     }
 
-    function renderAdditional(resume) {
+    function renderAdditional(data) {
     const container = document.getElementById('additional-list');
     if (!container) return;
     container.innerHTML = '';
     
-    if (!resume) {
-        container.innerHTML = '<div class="text-muted">Нет данных</div>';
-        return;
-    }
-    
     let html = '<div class="edu-item" style="width: 100%;"><div>';
     
-    if (resume.additionalIntro) {
-        html = html + '<p style="margin-bottom: 15px; font-weight: 500;">' + resume.additionalIntro + '</p>';
+    if (data.additionalIntro) {
+        html = html + '<p style="margin-bottom: 15px; font-weight: 500;">' + data.additionalIntro + '</p>';
     }
     
-    if (resume.additional && resume.additional.length > 0) {
+    if (data.additional && data.additional.length > 0) {
         html = html + '<ul style="margin: 0 0 15px 0; padding-left: 20px;">';
-        resume.additional.forEach(item => {
+        data.additional.forEach(item => {
             html = html + '<li>' + item + '</li>';
         });
         html = html + '</ul>';
     }
     
-    if (resume.additionalOutro) {
-        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + resume.additionalOutro + '</p>';
+    if (data.additionalOutro) {
+        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + data.additionalOutro + '</p>';
     }
     
-    if (resume.additionalOutroList && resume.additionalOutroList.length > 0) {
+    if (data.additionalOutroList && data.additionalOutroList.length > 0) {
         html = html + '<ul style="margin: 0 0 15px 0; padding-left: 20px;">';
-        resume.additionalOutroList.forEach(item => {
+        data.additionalOutroList.forEach(item => {
             html = html + '<li>' + item + '</li>';
         });
         html = html + '</ul>';
     }
     
-    if (resume.additionalLinkText && resume.additionalLinkUrl) {
-        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + resume.additionalLinkText + ' <a href="' + resume.additionalLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + resume.additionalLinkUrl + '</a></p>';
+    if (data.additionalLinkText && data.additionalLinkUrl) {
+        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + data.additionalLinkText + ' <a href="' + data.additionalLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + data.additionalLinkUrl + '</a></p>';
     }
     
-    if (resume.additionalThirdPhrase && resume.additionalThirdLinkUrl) {
-        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + resume.additionalThirdPhrase + ' <a href="' + resume.additionalThirdLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + (resume.additionalThirdLinkText || resume.additionalThirdLinkUrl) + '</a></p>';
+    if (data.additionalThirdPhrase && data.additionalThirdLinkUrl) {
+        html = html + '<p style="margin-top: 15px; font-weight: 500;">' + data.additionalThirdPhrase + ' <a href="' + data.additionalThirdLinkUrl + '" target="_blank" style="color: #3b82f6; text-decoration: none;">' + (data.additionalThirdLinkText || data.additionalThirdLinkUrl) + '</a></p>';
     }
     
     html = html + '</div></div>';
@@ -124,18 +119,7 @@ async function renderResume() {
         if (resume.personal) renderPersonalInfo(resume.personal);
         if (resume.skills) renderSkills(resume.skills);
         if (resume.education) renderEducation(resume.education);
-        if (resume.softskills) renderSoftskills(resume.softskills);
-        if (resume.additional) renderAdditional(
-        resume.additional, 
-        resume.additionalIntro, 
-        resume.additionalOutro, 
-        resume.additionalOutroList,
-        resume.additionalLinkText,
-        resume.additionalLinkUrl,
-        resume.additionalThirdPhrase,
-        resume.additionalThirdLinkText,
-        resume.additionalThirdLinkUrl
-    );
+        renderAdditional(resume);
     }
 }
 
