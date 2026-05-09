@@ -26,10 +26,13 @@ function renderSkills(skills) {
         return;
     }
 
+    let items = '';
     skills.forEach(skill => {
-        const item = '<div class="skill-item"><span style="font-weight: normal;">' + skill + '</span></div>';
-        container.innerHTML = container.innerHTML + item;
+        items = items + '<li style="margin-bottom: 8px;">' + skill + '</li>';
     });
+    
+    const box = '<div class="custom-card"><div class="card-body p-0"><ul style="margin: 0; padding-left: 20px;">' + items + '</ul></div></div>';
+    container.innerHTML = box;
 }
 
 function renderEducation(education) {
