@@ -228,3 +228,7 @@ body {
 #skills-list li:last-child {
     margin-bottom: 0;
 }
+
+#skills-list .custom-card {
+    border-left: 4px solid #3b82f6;
+}
