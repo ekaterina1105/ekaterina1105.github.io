@@ -129,11 +129,18 @@ body {
 
 .info-line {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     font-size: 1rem;
     padding: 10px 0;
     border-bottom: 1px dashed #e2e8f0;
+    flex-wrap: wrap;
+}
+
+.info-line span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .info-line i {
@@ -194,6 +201,18 @@ body {
     .personal-photo {
         width: 130px;
         height: 130px;
+    }
+    .info-line {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .info-line strong {
+        min-width: auto;
+    }
+    
+    .info-line span {
+        word-break: break-all;
     }
 }
 
