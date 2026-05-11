@@ -130,24 +130,25 @@ function setupPDFDownload() {
     if (!button) return;
     
     button.addEventListener('click', function() {
-        const element = document.querySelector('.resume-content');
+        const element = document.querySelector('.glass-card');
         
         const opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
+            margin: [0.3, 0.3, 0.3, 0.3],
             filename: 'resume_ekaterina.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
+            image: { type: 'jpeg', quality: 0.95 },
             html2canvas: { 
-                scale: 2, 
-                letterRendering: true,
+                scale: 1.5,
                 useCORS: true,
-                logging: false
+                logging: false,
+                windowWidth: element.scrollWidth,
+                windowHeight: element.scrollHeight
             },
             jsPDF: { 
-                unit: 'in', 
+                unit: 'mm', 
                 format: 'a4', 
                 orientation: 'portrait'
             },
-            pagebreak: { mode: 'avoid-all' }
+            pagebreak: { mode: ['css', 'legacy'] }
         };
         
         html2pdf().set(opt).from(element).save();
