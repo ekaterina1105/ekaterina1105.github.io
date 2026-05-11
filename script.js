@@ -130,7 +130,27 @@ function setupPDFDownload() {
     if (!button) return;
     
     button.addEventListener('click', function() {
-        window.print();
+        const element = document.querySelector('.resume-content');
+        
+        const opt = {
+            margin: [0.5, 0.5, 0.5, 0.5],
+            filename: 'resume_ekaterina.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 2, 
+                letterRendering: true,
+                useCORS: true,
+                logging: false
+            },
+            jsPDF: { 
+                unit: 'in', 
+                format: 'a4', 
+                orientation: 'portrait'
+            },
+            pagebreak: { mode: 'avoid-all' }
+        };
+        
+        html2pdf().set(opt).from(element).save();
     });
 }
 
