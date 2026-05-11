@@ -294,3 +294,42 @@ body {
 #additional-list li:last-child {
     margin-bottom: 0;
 }
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .glass-card {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        transform: none;
+    }
+    
+    .resume-content {
+        padding: 20px;
+    }
+    
+    #downloadPDF {
+        display: none;
+    }
+    
+    .custom-card:hover {
+        transform: none;
+    }
+    
+    .glass-card:hover {
+        transform: none;
+    }
+    
+    .personal-photo:hover {
+        transform: none;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
