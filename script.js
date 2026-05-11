@@ -129,29 +129,46 @@ function setupPDFDownload() {
     const button = document.getElementById('downloadPDF');
     if (!button) return;
     
-    button.addEventListener('click', function() {
+    button.addEventListener('click', async function() {
         const element = document.querySelector('.glass-card');
+        const { jsPDF } = window.jspdf;
         
-        const opt = {
-            margin: [0.3, 0.3, 0.3, 0.3],
-            filename: 'resume_ekaterina.pdf',
-            image: { type: 'jpeg', quality: 0.95 },
-            html2canvas: { 
-                scale: 1.5,
+        try {
+            const canvas = await html2canvas(element, {
+                scale: 2,
                 useCORS: true,
-                logging: false,
-                windowWidth: element.scrollWidth,
-                windowHeight: element.scrollHeight
-            },
-            jsPDF: { 
-                unit: 'mm', 
-                format: 'a4', 
+                logging: false
+            });
+            
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF({
+                unit: 'mm',
+                format: 'a4',
                 orientation: 'portrait'
-            },
-            pagebreak: { mode: ['css', 'legacy'] }
-        };
-        
-        html2pdf().set(opt).from(element).save();
+            });
+            
+            const imgWidth = 210;
+            const pageHeight = 297;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            
+            let position = 0;
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            
+            if (imgHeight > pageHeight) {
+                let heightLeft = imgHeight - pageHeight;
+                position = -pageHeight;
+                while (heightLeft > 0) {
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                    position -= pageHeight;
+                }
+            }
+            
+            pdf.save('resume_ekaterina.pdf');
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
     });
 }
 
